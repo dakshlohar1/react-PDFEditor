@@ -1,0 +1,83 @@
+{
+  "name": "react-pdfeditor",
+  "version": "1.0.0",
+  "description": "Add markups on PDF easily and download.",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/cjs/index.d.ts",
+  "author": "Daksh Lohar <dakshlohar4@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:dakshlohar1/react-PDFEditor.git",
+    "directory": "packages/react-pdfeditor"
+  },
+  "keywords": [
+    "pdf",
+    "pdf-editor",
+    "react"
+  ],
+  "scripts": {
+    "build": "yarn build-js",
+    "build-js": "yarn build-js-esm && yarn build-js-cjs && yarn build-js-cjs-package",
+    "build-js-esm": "tsc --project tsconfig.build.json --outDir dist/esm",
+    "build-js-cjs": "tsc --project tsconfig.build.json --outDir dist/cjs --module commonjs --moduleResolution node --verbatimModuleSyntax false",
+    "build-js-cjs-package": "echo '{\n  \"type\": \"commonjs\"\n}' > dist/cjs/package.json",
+    "clean": "rimraf dist",
+    "format": "prettier --check . --cache",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "prepack": "yarn clean && yarn build",
+    "test": "yarn lint && yarn tsc && yarn format && yarn unit",
+    "tsc": "tsc",
+    "unit": "vitest",
+    "watch": "yarn build-js-esm --watch & yarn build-js-cjs --watch & nodemon --watch src --ext css "
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "peerDependencies": {
+    "@types/react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "fabric": "^5.3.0",
+    "framer-motion": "^6",
+    "lodash": "^4.17.21",
+    "react-colorful": "^5.6.1",
+    "react-pdf": "5.7.2",
+    "react-select": "^5.8.0",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@types/fabric": "^5.3.7",
+    "@types/node": "*",
+    "@types/react": "*",
+    "eslint": "^9.4.0",
+    "nodemon": "^3.1.2",
+    "prettier": "^3.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.4.2"
+  }
+}
