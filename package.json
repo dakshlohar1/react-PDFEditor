@@ -1,0 +1,14 @@
+{
+  "name": "react-pdfeditor",
+  "version": "1.0.0",
+  "description": "Add markups on PDF easily and download.",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": "git@github.com:dakshlohar1/react-PDFEditor.git",
+  "author": "Daksh Lohar <dakshlohar4@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "packageManager": "yarn@1.22.22"
+}
